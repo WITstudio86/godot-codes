@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctaq6drxensa0"]
+
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="1_fyw0w"]
+[ext_resource type="Script" uid="uid://wv0pdkkrfywo" path="res://简单物理体/敌人.gd" id="2_iqagt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iqagt"]
+font_size = 25
+font_color = Color(1, 0.47467417, 0.31842732, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c21tp"]
+size = Vector2(312, 166)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpmce"]
+size = Vector2(73, 78)
+
+[node name="静态及动态物理体" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 47.0
+offset_top = 48.0
+offset_right = 1077.0
+offset_bottom = 84.0
+text = "staticBody2D 是一个静态钢体 , 可以与其他物理节点进行碰撞的物理体 , 但是无法被外力影响
+而移动
+
+characterBody 可以用于作为玩家 , 也可以用于作为可移动的敌人 "
+label_settings = SubResource("LabelSettings_iqagt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(924, 332)
+shape = SubResource("RectangleShape2D_c21tp")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+self_modulate = Color(0.14099824, 0.3380835, 0.25635394, 1)
+position = Vector2(925.00006, 330)
+scale = Vector2(2.578125, 1.3671875)
+texture = ExtResource("1_fyw0w")
+
+[node name="敌人" type="CharacterBody2D" parent="."]
+script = ExtResource("2_iqagt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="敌人"]
+position = Vector2(135.5, 253)
+shape = SubResource("RectangleShape2D_xpmce")
+
+[node name="Sprite2D" type="Sprite2D" parent="敌人"]
+position = Vector2(135, 252.5)
+scale = Vector2(0.65625, 0.6484375)
+texture = ExtResource("1_fyw0w")
