@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnmino71nsr1a"]
+
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="1_bvidb"]
+[ext_resource type="Script" uid="uid://ssn8outwsq3l" path="res://区域检测/gate.gd" id="1_e14t3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e14t3"]
+size = Vector2(32.567665, 34.516182)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qex6k"]
+font_size = 36
+
+[node name="入口区域" type="Node2D"]
+
+[node name="gate" type="StaticBody2D" parent="."]
+modulate = Color(0.10934054, 0.109340556, 0.10934054, 1)
+script = ExtResource("1_e14t3")
+
+[node name="SpritImg" type="Node2D" parent="gate"]
+
+[node name="Icon" type="Sprite2D" parent="gate/SpritImg"]
+position = Vector2(574, 73.33692)
+scale = Vector2(10.257814, 2.9389913)
+texture = ExtResource("1_bvidb")
+region_enabled = true
+region_rect = Rect2(0, 0, 127, 93.75)
+
+[node name="Icon2" type="Sprite2D" parent="gate/SpritImg"]
+position = Vector2(205, 193)
+scale = Vector2(4.4109097, 1.6164682)
+texture = ExtResource("1_bvidb")
+region_enabled = true
+region_rect = Rect2(0, 0, 127, 93.75)
+
+[node name="Icon3" type="Sprite2D" parent="gate/SpritImg"]
+position = Vector2(948, 204)
+scale = Vector2(4.4109097, 1.6164682)
+texture = ExtResource("1_bvidb")
+region_enabled = true
+region_rect = Rect2(0, 0, 127, 93.75)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="gate"]
+polygon = PackedVector2Array(483, 265, 483, 208, 667, 209, 667, 274, 1225, 275, 1223, -41, 1137, -65, 41, -67, -76, -34, -73, 265)
+
+[node name="Area2D" type="Area2D" parent="gate"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gate/Area2D"]
+position = Vector2(577, 242.99998)
+scale = Vector2(5.329646, 1.694456)
+shape = SubResource("RectangleShape2D_e14t3")
+debug_color = Color(1.4439225e-06, 0.56191427, 0.65794647, 0.41960785)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "使用 collsionPolygon2D , 实现多边形碰撞体积
+
+Area 实现一个碰撞区域, 在有 body 进入区域的时候发出信号 , 为了场景
+复用更方便可以使用自定义信号"
+label_settings = SubResource("LabelSettings_qex6k")
+
+[connection signal="body_entered" from="gate/Area2D" to="gate" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="gate/Area2D" to="gate" method="_on_area_2d_body_exited"]
