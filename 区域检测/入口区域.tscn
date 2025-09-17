@@ -58,5 +58,14 @@ Area 实现一个碰撞区域, 在有 body 进入区域的时候发出信号 , �
 复用更方便可以使用自定义信号"
 label_settings = SubResource("LabelSettings_qex6k")
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 482.00003
+offset_top = 282.0
+offset_right = 522.0
+offset_bottom = 305.0
+rotation = 2.1235225
+scale = Vector2(6.9105597, -3.0134835)
+text = "⬅️"
+
 [connection signal="body_entered" from="gate/Area2D" to="gate" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="gate/Area2D" to="gate" method="_on_area_2d_body_exited"]
