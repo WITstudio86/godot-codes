@@ -49,6 +49,11 @@ down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="玩家"
+2d_physics/layer_2="投掷物"
+
 [rendering]
 
 renderer/rendering_method="mobile"

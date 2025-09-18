@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://5abi6pdcjech"]
+
+[ext_resource type="Script" uid="uid://c7m8nf78qxxsl" path="res://面向及发射方向/方向.gd" id="1_byics"]
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="1_f71ll"]
+[ext_resource type="Script" uid="uid://cmi7wv284rgnc" path="res://面向及发射方向/玩家.gd" id="2_hxlc8"]
+[ext_resource type="LabelSettings" uid="uid://cla5y0md5epit" path="res://text.tres" id="3_hxlc8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxlc8"]
+size = Vector2(114, 112)
+
+[node name="方向" type="Node2D"]
+script = ExtResource("1_byics")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(551, 293)
+script = ExtResource("2_hxlc8")
+
+[node name="玩家" type="Sprite2D" parent="CharacterBody2D"]
+rotation = 1.5707964
+texture = ExtResource("1_f71ll")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_hxlc8")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 46.0
+offset_right = 488.0
+offset_bottom = 83.0
+text = "注意节点的 X 正轴方向才是节点的前方
+
+通过 look_at()面向指定的方向 , get_mouse_global_position 获取鼠标坐标
+
+发射需要先计算某个坐标所对应的角度 , 让发射物旋转 , 然后再使其面向某个方向移动
+
+计算出相对x 和 y 要移动的距离矢量之后需要使用 normalized()将矢量缩放到接近于 0 便于
+后续计算"
+label_settings = ExtResource("3_hxlc8")
+
+[connection signal="shoot" from="CharacterBody2D" to="." method="_on_character_body_2d_shoot"]
