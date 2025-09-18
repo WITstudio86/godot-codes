@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccee264jp7fxk"]
+
+[ext_resource type="Script" uid="uid://cqquyqgpkdmrf" path="res://RigidBody2D/投掷物钢体.gd" id="1_4iw84"]
+[ext_resource type="LabelSettings" uid="uid://cla5y0md5epit" path="res://text.tres" id="2_tnhl3"]
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="3_tnhl3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnhl3"]
+size = Vector2(205.78824, 37.839966)
+
+[node name="投掷物钢体" type="Node2D"]
+script = ExtResource("1_4iw84")
+
+[node name="其他物理体" type="StaticBody2D" parent="."]
+position = Vector2(560, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="其他物理体"]
+rotation = -0.56763166
+shape = SubResource("RectangleShape2D_tnhl3")
+
+[node name="Sprite2D" type="Sprite2D" parent="其他物理体"]
+rotation = -0.59560025
+scale = Vector2(1.7734375, 0.4140625)
+texture = ExtResource("3_tnhl3")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 61.0
+offset_top = 12.0
+offset_right = 1077.0
+offset_bottom = 327.0
+text = "Gravity Scale 可以调整物体的重力缩放 , 设置为 0 就rigidbody2d不下落
+
+ linear 中的 velocity 可以设置RigidBody2d 的移动速度 , 使用 linear_velocity 属性设置
+
+physics Material Override 设置物理材质覆盖 , 新建一个之后可以
+    通过 Bounce 设置反弹力 
+    friction 设置摩擦力
+linear 中的Damp 可以设置阻尼"
+label_settings = ExtResource("2_tnhl3")
