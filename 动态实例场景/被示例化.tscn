@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfi5hw48jwpbi"]
+
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="1_np4sg"]
+[ext_resource type="Script" uid="uid://bp331hrkdbnau" path="res://动态实例场景/被示例化.gd" id="1_qbku5"]
+
+[node name="被示例化" type="Node2D"]
+script = ExtResource("1_qbku5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_np4sg")

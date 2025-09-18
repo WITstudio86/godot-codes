@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://7jgrlecp7pim"]
+
+[ext_resource type="Script" uid="uid://sn666dd68qud" path="res://动态实例场景/动态实例场景.gd" id="1_lwbe6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eauk3"]
+font_size = 28
+
+[node name="动态实例场景" type="Node2D"]
+script = ExtResource("1_lwbe6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 74.0
+offset_top = 35.0
+offset_right = 528.0
+offset_bottom = 75.0
+text = "动态实例化场景先使用 preload 加载场景类
+
+然后通过 instantiate 实例化场景到变量中
+
+通过 add_child 添加场景到当前节点树
+
+点击鼠标生成场景实例"
+label_settings = SubResource("LabelSettings_eauk3")
