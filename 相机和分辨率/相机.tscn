@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cxpbdlsucinag"]
+
+[node name="相机" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "给要添加相机的节点添加 Camera 子节点就可以添加相机了
+
+Position Smoothing 勾选 开启平滑移动 , speed 通常为 5
+
+offset 可以设置相机相对于父节点的偏移
+
+limit 可以设置相机的可用范围
+
+Zoom 可以设置相机视野的缩放 例如 0.6相对于 1可以看到更多的内容 , 但是内容更小
+
+项目设置的 display 中的 window 中可以设置 wiewport 的分辨率 , 通常为 1280 * 720
+
+"
+
+[node name="Camera2D" type="Camera2D" parent="Label"]
+offset = Vector2(200, 100)
+zoom = Vector2(1.3, 1.3)
+position_smoothing_enabled = true
