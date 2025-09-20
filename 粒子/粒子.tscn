@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://crl2gvaptsgfc"]
+
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="1_c0w12"]
+[ext_resource type="Script" uid="uid://bhp5mdtg3ln3w" path="res://粒子/发射.gd" id="2_wabqo"]
+[ext_resource type="LabelSettings" uid="uid://cla5y0md5epit" path="res://text.tres" id="3_n1g4r"]
+
+[sub_resource type="Curve" id="Curve_n1g4r"]
+_data = [Vector2(0, 0.9248011), 0.0, 0.0, 0, 0, Vector2(1, 0.62400573), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nlbmc"]
+colors = PackedColorArray(0, 0, 0, 1, 0.8539175, 0.8539175, 0.8539175, 1)
+
+[node name="粒子" type="Node2D"]
+
+[node name="烟" type="Node2D" parent="."]
+position = Vector2(115, 125)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="烟"]
+position = Vector2(-7, 0)
+amount = 50
+texture = ExtResource("1_c0w12")
+emission_shape = 1
+emission_sphere_radius = 62.25
+gravity = Vector2(100, -50)
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_n1g4r")
+color_ramp = SubResource("Gradient_nlbmc")
+
+[node name="发射" type="Node2D" parent="."]
+script = ExtResource("2_wabqo")
+
+[node name="Sprite2D" type="Sprite2D" parent="发射"]
+position = Vector2(357, 114)
+texture = ExtResource("1_c0w12")
+region_enabled = true
+region_rect = Rect2(0, 51.75, 128, 26.5)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="发射"]
+position = Vector2(426, 115)
+emitting = false
+amount = 10
+texture = ExtResource("1_c0w12")
+lifetime = 0.28
+one_shot = true
+gravity = Vector2(0, 0)
+initial_velocity_min = 78.57
+initial_velocity_max = 257.15
+scale_amount_min = 0.0
+scale_amount_max = 0.1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 9.0
+offset_top = 241.0
+offset_right = 1158.0
+offset_bottom = 596.0
+text = "烟雾
+
+将粒子生成形状换成圆形并扩大其范围 , 通过修改 x 和 y 方向额重力改变粒子朝向 , 修改最大最小
+范围以及粒子数量使其形状更加接近烟雾 , 这里的纹理是用的是 icon , 常规应该使用烟雾纹理图片
+可以通过缩放以及颜色的渐变
+
+发射(按下鼠标测试)
+设置粒子方向(默认 x1,y0 右侧) , 设置sprea 属性控制粒子生成的随机角度范围 , 通过 initailvelocity 
+添加速度范围实现随机方向的散射粒子"
+label_settings = ExtResource("3_n1g4r")
