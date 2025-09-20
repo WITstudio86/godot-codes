@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=4 uid="uid://ckc0kasv7dctq"]
+
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="1_i63jx"]
+[ext_resource type="LabelSettings" uid="uid://cla5y0md5epit" path="res://text.tres" id="2_4uiwu"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qx547"]
+polygon = PackedVector2Array(4.696432, 15.539206, 12.7654705, 20.204119, 21, 15.066406, 21, 21, 0.31046295, 21)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uj28q"]
+polygon = PackedVector2Array(-20.739952, 3.4356441, -9.2667885, -0.69343376, -4.034519, 8.069038, 6.3984966, 8.037519, 10.968851, -0.18911934, 20.519316, 2.6476536, 21, 21, -21, 21)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_afdjn"]
+polygon = PackedVector2Array(-2.9313316, 15.91744, -10.905811, 20.204119, -18.880291, 13.963221, -19.10093, 3.2465267, -21, 2.9628487, -21, 21, 1.7020626, 21)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4uiwu"]
+texture = ExtResource("1_i63jx")
+texture_region_size = Vector2i(42, 42)
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_qx547")
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.381172, 15.947472, 12.793026, 21, 21, 14.370247, 21, 21, 0.70098877, 21)
+1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_uj28q")
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21, 3.50494, -8.587099, -0.17524719, -3.6801853, 9.112839, 5.7831497, 8.762344, 10.865311, -0.35049438, 21, 3.1544456, 21, 21, -21, 21)
+2:0/0 = 0
+2:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_afdjn")
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.381172, 15.947472, -11.215805, 21, -18.926668, 14.720741, -19.27716, 4.030678, -21, 2.4534569, -21, 21, 0.35049438, 21)
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qx547"]
+tile_size = Vector2i(42, 42)
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4uiwu")
+
+[node name="瓦片地图" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAACAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAIAAAABAAQAAAABAAIAAAACAAQAAAABAAIAAAADAAQAAAABAAIAAAAEAAQAAAACAAIAAAAEAAEAAAACAAEAAAAEAAIAAAACAAEAAAAEAAMAAAACAAEAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAADAAIAAAABAAEAAAACAAIAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_qx547")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 61.0
+offset_top = 275.0
+offset_right = 755.0
+offset_bottom = 391.0
+text = "Physics Laye 添加物理碰撞层
+
+Rendering 下的 Occlusion Layers 添加遮挡层 , 遮挡灯光等"
+label_settings = ExtResource("2_4uiwu")
