@@ -69,7 +69,7 @@ texture = ExtResource("2_7xuog")
 occluder = SubResource("OccluderPolygon2D_g1u6s")
 
 [node name="玩家" type="Node2D" parent="."]
-position = Vector2(275, 427)
+position = Vector2(406, 417)
 
 [node name="Sprite2D" type="Sprite2D" parent="玩家"]
 texture = ExtResource("1_fcwme")
@@ -93,5 +93,7 @@ autowrap_mode = 3
 clip_text = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-423, 166)
+rotation = -0.35953784
 tile_map_data = PackedByteArray(0, 0, 11, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 13, 0, 9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 11, 0, 10, 0, 0, 0, 0, 0, 1, 0, 0, 0, 11, 0, 11, 0, 0, 0, 0, 0, 1, 0, 0, 0)
 tile_set = SubResource("TileSet_g1u6s")
