@@ -77,6 +77,17 @@ texture = ExtResource("1_fcwme")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="玩家"]
 occluder = SubResource("OccluderPolygon2D_axn65")
 
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-423, 166)
+rotation = -0.35953784
+tile_map_data = PackedByteArray(0, 0, 11, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 13, 0, 9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 11, 0, 10, 0, 0, 0, 0, 0, 1, 0, 0, 0, 11, 0, 11, 0, 0, 0, 0, 0, 1, 0, 0, 0)
+tile_set = SubResource("TileSet_g1u6s")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+energy = 3.54
+blend_mode = 1
+
 [node name="Label" type="Label" parent="."]
 offset_left = 39.0
 offset_top = 24.0
@@ -87,13 +98,9 @@ text = "PointLight 添加灯光 , Texture 设置灯光纹理 , scale 可以设�
       Filter 可以添加颜色过滤器 , 
             PCF13 是一个特别模糊的过渡 , None 是明显的光线分解 , PVF5是有明显分层的过渡色分界线 , 通过 smooth 设置过渡 , 数字越大颜色之间的间距越大
 
-瓦片地图的 Rendering 中的 Occlusion Layers 添加元素后可以在瓦片地图中绘制遮盖层 , 实现灯光遮挡"
+瓦片地图的 Rendering 中的 Occlusion Layers 添加元素后可以在瓦片地图中绘制遮盖层 , 实现灯光遮挡
+
+环境光节点可以通过将混合模式从 add 变为 sub 实现画面变暗"
 label_settings = ExtResource("3_7xuog")
 autowrap_mode = 3
 clip_text = true
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-position = Vector2(-423, 166)
-rotation = -0.35953784
-tile_map_data = PackedByteArray(0, 0, 11, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 13, 0, 9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 11, 0, 10, 0, 0, 0, 0, 0, 1, 0, 0, 0, 11, 0, 11, 0, 0, 0, 0, 0, 1, 0, 0, 0)
-tile_set = SubResource("TileSet_g1u6s")
