@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0ioqilojrt15"]
+
+[ext_resource type="Script" uid="uid://6jn1ubao4oqf" path="res://关卡切换/关卡1.gd" id="1_u4aaa"]
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="2_h5gy8"]
+[ext_resource type="LabelSettings" uid="uid://cla5y0md5epit" path="res://text.tres" id="4_rrbjk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrbjk"]
+size = Vector2(126, 124)
+
+[node name="关卡1" type="Node2D"]
+script = ExtResource("1_u4aaa")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(391, 393)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_rrbjk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(391, 393)
+texture = ExtResource("2_h5gy8")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -25.0
+offset_top = -59.0
+offset_right = 23.0
+offset_bottom = -35.0
+text = "去黄色"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_top = 2.0
+offset_right = 907.0
+offset_bottom = 238.0
+text = "这里有一个大坑 , 关卡2继承与关卡 1 , 依赖于一个程序 , 如果是通过 export 的PackedScene获取目标场景 , 子场景里的导出属性的时候可能会覆盖掉副场景的值 , 在运行的时候会变成 null 
+
+尽可能使用路径而不是场景
+可以在 ready 中判断当前 export 是否为空 , 如果是通过程序跳转到特定的场景"
+label_settings = ExtResource("4_rrbjk")
+autowrap_mode = 3
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
