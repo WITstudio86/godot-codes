@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxkvh3odlnot5"]
+
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="1_fcwme"]
+[ext_resource type="Texture2D" uid="uid://btspgeadxrgfh" path="res://circle.png" id="2_7xuog"]
+[ext_resource type="LabelSettings" uid="uid://cla5y0md5epit" path="res://text.tres" id="3_7xuog"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g1u6s"]
+polygon = PackedVector2Array(-45, 1, 48, 1, 68, 17, 67, -14, -66, -15, -65, 15)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_axn65"]
+polygon = PackedVector2Array(-38, -27, -30, -22, -22, -29, -22, -40, -9, -44, -4, -35, 5, -34, 10, -44, 24, -39, 21, -29, 31, -23, 39, -28, 48, -16, 42, -9, 41, 25, 38, 34, 27, 40, 0, 44, -26, 41, -36, 35, -40, 27, -41, -7, -47, -16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7xuog"]
+polygon = PackedVector2Array(-21, -21, 21, -21, 21, 21, -21, 21)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qa2p7"]
+polygon = PackedVector2Array(-21, -21, 21, -21, 21, 21, -21, 21)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uvswd"]
+polygon = PackedVector2Array(-21, -21, 21, -21, 21, 21, -21, 21)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7xuog"]
+texture = ExtResource("1_fcwme")
+texture_region_size = Vector2i(42, 42)
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_7xuog")
+1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_uvswd")
+2:0/0 = 0
+0:1/0 = 0
+0:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_qa2p7")
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_g1u6s"]
+tile_size = Vector2i(42, 42)
+occlusion_layer_0/light_mask = 1
+sources/0 = SubResource("TileSetAtlasSource_7xuog")
+
+[node name="灯光" type="Node2D"]
+
+[node name="背景" type="Sprite2D" parent="."]
+modulate = Color(0.043879174, 0.043878995, 0.034477547, 1)
+position = Vector2(578, 354)
+scale = Vector2(9.033169, 9.757279)
+texture = ExtResource("1_fcwme")
+
+[node name="光源" type="Node2D" parent="."]
+position = Vector2(333, 281)
+
+[node name="Sprite2D" type="Sprite2D" parent="光源"]
+texture = ExtResource("1_fcwme")
+region_enabled = true
+region_rect = Rect2(0, 55.5, 128, 26)
+
+[node name="PointLight2D" type="PointLight2D" parent="光源"]
+position = Vector2(0, 5)
+color = Color(0.9407004, 0.5080781, 0.45613426, 1)
+energy = 65.29
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.7
+texture = ExtResource("2_7xuog")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="光源"]
+occluder = SubResource("OccluderPolygon2D_g1u6s")
+
+[node name="玩家" type="Node2D" parent="."]
+position = Vector2(275, 427)
+
+[node name="Sprite2D" type="Sprite2D" parent="玩家"]
+texture = ExtResource("1_fcwme")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="玩家"]
+occluder = SubResource("OccluderPolygon2D_axn65")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 24.0
+offset_right = 1111.0
+offset_bottom = 568.0
+text = "PointLight 添加灯光 , Texture 设置灯光纹理 , scale 可以设置纹理缩放控制灯光范围, Energy 可以设置灯光强度, 打开 shadow 可以设置灯光可以被遮盖 , 
+      shadow 中的 color 可以设置阴影部分的颜色大多数时候需要一个特别暗且透明的颜色 , 
+      Filter 可以添加颜色过滤器 , 
+            PCF13 是一个特别模糊的过渡 , None 是明显的光线分解 , PVF5是有明显分层的过渡色分界线 , 通过 smooth 设置过渡 , 数字越大颜色之间的间距越大
+
+瓦片地图的 Rendering 中的 Occlusion Layers 添加元素后可以在瓦片地图中绘制遮盖层 , 实现灯光遮挡"
+label_settings = ExtResource("3_7xuog")
+autowrap_mode = 3
+clip_text = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 11, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 13, 0, 9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 11, 0, 10, 0, 0, 0, 0, 0, 1, 0, 0, 0, 11, 0, 11, 0, 0, 0, 0, 0, 1, 0, 0, 0)
+tile_set = SubResource("TileSet_g1u6s")
