@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://lgw6rh0nc5r2"]
+
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="1_n6nvu"]
+[ext_resource type="Script" uid="uid://quij8fgqpuhc" path="res://继承/红色.gd" id="1_wrsvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrsvg"]
+size = Vector2(122, 124)
+
+[node name="红色" type="Node2D"]
+script = ExtResource("1_wrsvg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.9102998, 0.08300444, 0.18975806, 1)
+texture = ExtResource("1_n6nvu")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_wrsvg")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

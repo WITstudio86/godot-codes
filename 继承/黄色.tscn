@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c45t1dn2fct6t"]
+
+[ext_resource type="PackedScene" uid="uid://lgw6rh0nc5r2" path="res://继承/红色.tscn" id="1_p08r7"]
+[ext_resource type="Script" uid="uid://cjfme5o4w7c26" path="res://继承/黄色.gd" id="2_yy5df"]
+
+[node name="黄色" instance=ExtResource("1_p08r7")]
+script = ExtResource("2_yy5df")
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(0.5842263, 0.4862231, 0, 1)
