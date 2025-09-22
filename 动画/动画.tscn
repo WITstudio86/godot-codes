@@ -1,0 +1,197 @@
+[gd_scene load_steps=16 format=3 uid="uid://38g2hgtpppi4"]
+
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="1_5v0mw"]
+[ext_resource type="Script" uid="uid://bb3nb5b4mm4qf" path="res://动画/动画.gd" id="1_xqv1g"]
+[ext_resource type="LabelSettings" uid="uid://cla5y0md5epit" path="res://text.tres" id="2_xqv1g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnsg3"]
+atlas = ExtResource("1_5v0mw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg3kc"]
+atlas = ExtResource("1_5v0mw")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slp1q"]
+atlas = ExtResource("1_5v0mw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrvcg"]
+atlas = ExtResource("1_5v0mw")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh6cn"]
+atlas = ExtResource("1_5v0mw")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgbnn"]
+atlas = ExtResource("1_5v0mw")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2tlx"]
+atlas = ExtResource("1_5v0mw")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgbgc"]
+atlas = ExtResource("1_5v0mw")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rplut"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnsg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xg3kc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slp1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrvcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh6cn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgbnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2tlx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgbgc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_rvhqs"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(96, 414), Vector2(1011, 438)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.033333335, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.15294118)]
+}
+
+[sub_resource type="Animation" id="Animation_nxgvl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(72, 383)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qm2ic"]
+_data = {
+&"RESET": SubResource("Animation_nxgvl"),
+&"move": SubResource("Animation_rvhqs")
+}
+
+[node name="动画" type="Node2D"]
+script = ExtResource("1_xqv1g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(324, 185)
+scale = Vector2(5.204649, 5.204649)
+sprite_frames = SubResource("SpriteFrames_rplut")
+frame_progress = 0.31900194
+
+[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
+zoom = Vector2(0.6, 0.6)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 1135.0
+offset_bottom = 45.0
+text = "AnimatedSprite2D 可以实现 2D 动画 , 单独图片和精灵图节皆可
+
+AnimationPlayer 可以创建动画轨道 , 通过关键帧实现属性 变化 , 特定时间调用函数等等
+
+补充 : 动画中的半透明渐变可以通过添加属性轨道的 modulate 实现
+
+补间动画 Tweens: 定义属性 , 持续时间, 等信息之后自动实现的动画
+ 
+create_tween 创建动画
+tween.tween_property(节点 , 字符串属性名 , 目标值 , 持续时间) 实现某个属性的补间动画 
+tween.set_parallel(true) 可以设置所有动画同时运行
+.from() 可以设置动画开始播放时的起始值
+.set_trans() 可以设置动画速度 , 默认线性"
+label_settings = ExtResource("2_xqv1g")
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qm2ic")
+}
+autoplay = "move"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(72, 383)
+texture = ExtResource("1_5v0mw")
