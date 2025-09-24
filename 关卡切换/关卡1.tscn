@@ -10,14 +10,8 @@ size = Vector2(126, 124)
 [node name="关卡1" type="Node2D"]
 script = ExtResource("1_u4aaa")
 
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(391, 393)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_rrbjk")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(391, 393)
+position = Vector2(1023, 169)
 texture = ExtResource("2_h5gy8")
 
 [node name="Label" type="Label" parent="Sprite2D"]
@@ -28,15 +22,25 @@ offset_bottom = -35.0
 text = "去黄色"
 metadata/_edit_use_anchors_ = true
 
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("RectangleShape2D_rrbjk")
+
 [node name="Label" type="Label" parent="."]
-offset_top = 2.0
-offset_right = 907.0
-offset_bottom = 238.0
+offset_left = 23.0
+offset_top = 7.0
+offset_right = 930.0
+offset_bottom = 641.0
 text = "这里有一个大坑 , 关卡2继承与关卡 1 , 依赖于一个程序 , 如果是通过 export 的PackedScene获取目标场景 , 子场景里的导出属性的时候可能会覆盖掉副场景的值 , 在运行的时候会变成 null 
 
 尽可能使用路径而不是场景
-可以在 ready 中判断当前 export 是否为空 , 如果是通过程序跳转到特定的场景"
+可以在 ready 中判断当前 export 是否为空 , 如果是通过程序跳转到特定的场景
+
+鼠标点击进行跳转 , 渐变过渡是通过canvasLayer 实现的 , 在其中创建一个颜色矩形使其覆盖窗口 , 并将这个 layer 添加到全局  , 为其添加一个从透明到颜色的过渡动画 , 给这个 layer 添加一个函数接收目标跳转 scene 路径用于播放渐变变动画并切换场景到目标 scene  , 然后通过 play_backwards(\"动画名\") 倒播动画从有色到透明
+
+补充: 由于切换 scene 的时候并不会等待动画播放所以是看不到动画效果的 , 所以我们需要使用 await 等待动画的播放完毕(动画.animation_finished 属性获取动画是否结束)z "
 label_settings = ExtResource("4_rrbjk")
 autowrap_mode = 3
 
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Sprite2D/Area2D" to="." method="_on_area_2d_input_event"]

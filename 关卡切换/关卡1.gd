@@ -12,5 +12,5 @@ func _ready() -> void:
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("primary action"):
-			get_tree().change_scene_to_file(scence_path)
+			TransitionLayer.change_scene(scence_path)
 			print('切换 , target level:' , scence_path)

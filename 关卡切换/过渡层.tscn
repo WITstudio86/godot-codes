@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://nfqpf23dotj0"]
+
+[ext_resource type="Script" uid="uid://dx2ketdthyhl2" path="res://关卡切换/过渡层.gd" id="1_csa2b"]
+
+[sub_resource type="Animation" id="Animation_p1ggp"]
+resource_name = "a_to_b"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.012447376, 0.08387906, 0.04940728, 0.8666667)]
+}
+
+[sub_resource type="Animation" id="Animation_una6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_knoe3"]
+_data = {
+&"RESET": SubResource("Animation_una6i"),
+&"a_to_b": SubResource("Animation_p1ggp")
+}
+
+[node name="过渡层" type="CanvasLayer"]
+script = ExtResource("1_csa2b")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = -0.00086805556
+anchor_right = 0.459819
+anchor_bottom = 1.0
+offset_right = 621.2885
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.46068707, 1)
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_knoe3")
+}

@@ -14,6 +14,10 @@ config/name="笔记代码库 2D"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+TransitionLayer="*res://关卡切换/过渡层.tscn"
+
 [input]
 
 left={
