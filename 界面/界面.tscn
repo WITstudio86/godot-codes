@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpyiq0lltirhh"]
+
+[ext_resource type="LabelSettings" uid="uid://cla5y0md5epit" path="res://text.tres" id="1_17t50"]
+[ext_resource type="Script" uid="uid://dlq60fwg7srxy" path="res://界面/界面.gd" id="1_t68ye"]
+[ext_resource type="Texture2D" uid="uid://csttsj4lm4vm8" path="res://icon.svg" id="2_t68ye"]
+
+[node name="界面" type="Node2D"]
+script = ExtResource("1_t68ye")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="边距组件" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -199.0
+offset_right = 158.0
+grow_vertical = 0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="水平盒子" type="HBoxContainer" parent="CanvasLayer/边距组件"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="垂直盒子" type="VBoxContainer" parent="CanvasLayer/边距组件/水平盒子"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/边距组件/水平盒子/垂直盒子"]
+layout_mode = 2
+label_settings = ExtResource("1_17t50")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/边距组件/水平盒子/垂直盒子"]
+modulate = Color(1, 0.25490198, 1, 1)
+layout_mode = 2
+texture = ExtResource("2_t68ye")
+
+[node name="垂直盒子 2" type="VBoxContainer" parent="CanvasLayer/边距组件/水平盒子"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/边距组件/水平盒子/垂直盒子 2"]
+layout_mode = 2
+label_settings = ExtResource("1_17t50")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/边距组件/水平盒子/垂直盒子 2"]
+modulate = Color(0.1764706, 0.92941177, 1, 1)
+layout_mode = 2
+texture = ExtResource("2_t68ye")
+
+[node name="边距组件2" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -57.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 30
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/边距组件2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 1150.0
+offset_bottom = 360.0
+text = "canvasLay 可以作为控制组件的容器节点 , 永远显示在最上层与当前窗口大小相同基于窗口而不基于其他节点 , 所以不管相机如何移动 ,它都是可见的
+
+希望所有的组件不论分辨率如何都处在固定的窗口位置就要使用边距组件等设置位置
+
+ProgressBar 可以通过关闭 show_percentage 关闭百分比的显示 , 但是关闭之后会丢失高度 , 可以通过size_flags_vertical 为纵向填充实现高度
+
+Color() 可以创建颜色 , 可以创建一个通用的处理函数(在所判断的数字相同的时候) , 接受要判断的数据 , 要修改的节点 , 在此函数中统一修改"
+label_settings = ExtResource("1_17t50")
+autowrap_mode = 3
+
+[connection signal="gui_input" from="CanvasLayer/边距组件/水平盒子/垂直盒子" to="." method="_on_垂直盒子_gui_input"]
+[connection signal="gui_input" from="CanvasLayer/边距组件/水平盒子/垂直盒子 2" to="." method="_on_垂直盒子_2_gui_input"]
