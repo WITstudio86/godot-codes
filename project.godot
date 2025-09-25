@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 TransitionLayer="*res://关卡切换/过渡层.tscn"
+GlobalSetGet="*res://set 和 get/global_var.gd"
 
 [input]
 

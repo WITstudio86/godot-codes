@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkdoi7yqoggqy"]
+
+[ext_resource type="LabelSettings" uid="uid://cla5y0md5epit" path="res://text.tres" id="1_jrfeo"]
+[ext_resource type="PackedScene" uid="uid://cec4m61whcdgs" path="res://set 和 get/得分物品.tscn" id="2_trxm8"]
+[ext_resource type="PackedScene" uid="uid://c8otxw2imw0yg" path="res://set 和 get/ui.tscn" id="3_xv2yg"]
+
+[sub_resource type="Animation" id="Animation_qvt58"]
+resource_name = "渐变到隐藏"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.03137255)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_trxm8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xv2yg"]
+_data = {
+&"RESET": SubResource("Animation_trxm8"),
+&"渐变到隐藏": SubResource("Animation_qvt58")
+}
+
+[node name="SetGet" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1139.0
+offset_bottom = 548.0
+text = "在变量的值更改或访问的时候自动运行某些指令
+
+var variable = 0:
+    get:
+	        pass
+    set(value):
+	        pass
+
+get会在访问值的时候触发 , return variable 会返回变量本身的值 , 如果不需要其他功能的时候忽略 get 也有一样的效果
+
+set 会在更新值的时候触发 , 注意这里的 value 是结果值 , 例如 v += 10 , 是+10的结果传入 set
+
+结合信号实现物品被触发的时候修改 global 中的值激活 set 函数 , set 函数中发出这个信号是全局的 , 所有的节点都可以接收 , 但是需要手动实现通过 : 全局名.connect(\"信号名\")"
+label_settings = ExtResource("1_jrfeo")
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_xv2yg")
+}
+autoplay = "渐变到隐藏"
+
+[node name="得分物品" parent="." instance=ExtResource("2_trxm8")]
+position = Vector2(510, 168)
+
+[node name="UI" parent="得分物品" instance=ExtResource("3_xv2yg")]
