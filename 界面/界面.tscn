@@ -69,18 +69,20 @@ size_flags_vertical = 1
 value = 50.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 6.0
 offset_top = 6.0
 offset_right = 1150.0
-offset_bottom = 360.0
+offset_bottom = 519.0
 text = "canvasLay 可以作为控制组件的容器节点 , 永远显示在最上层与当前窗口大小相同基于窗口而不基于其他节点 , 所以不管相机如何移动 ,它都是可见的
 
 希望所有的组件不论分辨率如何都处在固定的窗口位置就要使用边距组件等设置位置
 
 ProgressBar 可以通过关闭 show_percentage 关闭百分比的显示 , 但是关闭之后会丢失高度 , 可以通过size_flags_vertical 为纵向填充实现高度
 
-Color() 可以创建颜色 , 可以创建一个通用的处理函数(在所判断的数字相同的时候) , 接受要判断的数据 , 要修改的节点 , 在此函数中统一修改"
+Color() 可以创建颜色 , 可以创建一个通用的处理函数(在所判断的数字相同的时候) , 接受要判断的数据 , 要修改的节点 , 在此函数中统一修改
+
+这些 textureRect 在修改尺寸的时候可以先设置 expand 参考宽度 , 然后通过layout 中的 custom x 设置最小宽度 , 这是文理尺寸的最小宽度限制 "
 label_settings = ExtResource("1_17t50")
 autowrap_mode = 3
 
